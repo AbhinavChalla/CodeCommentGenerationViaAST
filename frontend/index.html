@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PyComment — AI Code Annotator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/tomorrow-night.min.css" />
+  <link rel="stylesheet" href="/frontend/styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">⚡</div>
+    <div class="logo-text">A<span>P</span>D<span>S</span></div>
+  </div>
+  <div class="header-badge">Powered by <b>Mistral-7B</b> via HuggingFace</div>
+</header>
+
+<main>
+
+  <!-- INPUT PANEL -->
+  <div class="panel" id="inputPanel">
+    <div class="panel-header">
+      <div class="panel-title">
+        <span class="dot dot-input"></span>
+        Input — Raw Python
+      </div>
+      <div class="panel-actions">
+        <button class="btn btn-ghost btn-icon" title="Clear" onclick="clearInput()">✕</button>
+        <button class="btn btn-ghost btn-icon" title="Load example" onclick="loadExample()">⤓</button>
+      </div>
+    </div>
+    <div class="editor-wrap">
+      <div class="line-numbers" id="lineNumbers"></div>
+      <textarea
+        id="codeInput"
+        spellcheck="false"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        placeholder="# Paste your Python code here..."></textarea>
+    </div>
+  </div>
+
+  <!-- OUTPUT PANEL -->
+  <div class="panel" id="outputPanel">
+    <div class="panel-header">
+      <div class="panel-title">
+        <span class="dot dot-output"></span>
+        Output — Commented Code
+      </div>
+      <div class="panel-actions">
+        <button class="btn btn-ghost btn-icon" id="copyBtn" title="Copy to clipboard" onclick="copyOutput()" style="display:none">⧉</button>
+      </div>
+    </div>
+    <div class="output-wrap" id="outputWrap">
+      <div class="empty-state" id="emptyState">
+        <div class="es-icon">◈</div>
+        <p>Your commented code<br/>will appear here.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA ROW -->
+  <div class="cta-row">
+    <button class="btn btn-ghost" onclick="clearAll()">Clear All</button>
+    <button class="btn btn-primary" onclick="openAstPdf()" title="Generate and open AST PDF">
+      ⎋ View AST PDF
+    </button>
+    <button class="btn btn-primary" id="generateBtn" onclick="generateComments()">
+      <span id="btnIcon">▶</span>
+      <span id="btnText">Generate Comments</span>
+    </button>
+  </div>
+
+</main>
+
+<!-- Status bar -->
+<div class="status-bar" id="statusBar">
+  <div class="status-item" id="statusMsg">◈ Ready</div>
+  <div class="status-item" id="lineCount">Ln 1, Col 1</div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script src="/frontend/script.js"></script>
+
+</body>
+</html>

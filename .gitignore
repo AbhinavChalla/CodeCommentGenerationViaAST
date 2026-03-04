@@ -1,0 +1,7 @@
+.vscode
+venv
+.env
+Digraph.gv
+Digraph.gv.pdf
+TODO.txt
+__pycache__
