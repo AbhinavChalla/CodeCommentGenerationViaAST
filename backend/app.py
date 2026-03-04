@@ -3,11 +3,14 @@ from flask import Flask, request, jsonify, send_from_directory
 import ast
 from huggingface_hub import InferenceClient
 from visualise import open_ast_pdf
+from dotenv import load_dotenv
 import os
 
 app = Flask(__name__, static_folder="../frontend")
 
-TOKEN = os.environ.get("API_KEY")
+load_dotenv()
+
+TOKEN = os.getenv("API_KEY")
 client = InferenceClient(api_key=TOKEN)
 
 CC_THRESHOLD = 15
