@@ -111,14 +111,18 @@ class GraphRenderer:
             if key == "node_type":
                 continue
             child_node_id = self._render_node(value)
-            self._graph.edge(node_id, child_node_id, label=self._escape_dot_label(key))
+            self._graph.edge(node_id, child_node_id
+                             #, label=self._escape_dot_label(key)
+                             )
 
 
     def _render_list(self, node, node_id):
         self._graph.node(node_id, label="[list]")
         for idx, value in enumerate(node):
             child_node_id = self._render_node(value)
-            self._graph.edge(node_id, child_node_id, label=self._escape_dot_label(str(idx)))
+            self._graph.edge(node_id, child_node_id
+                             #, label=self._escape_dot_label(str(idx))
+                             )
 
 
     def render(self, data, *, label=None):
