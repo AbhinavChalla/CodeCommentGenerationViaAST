@@ -2,7 +2,7 @@
 from flask import Flask, request, jsonify, send_from_directory
 import ast
 from huggingface_hub import InferenceClient
-from visualise import open_ast_pdf
+from backend.visualise import open_ast_pdf
 from dotenv import load_dotenv
 import os
 
