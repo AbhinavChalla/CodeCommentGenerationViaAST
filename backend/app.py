@@ -6,9 +6,9 @@ from visualise import open_ast_pdf
 from dotenv import load_dotenv
 import os
 
-app = Flask(__name__, static_folder="../frontend")
-
 load_dotenv()
+
+app = Flask(__name__, static_folder="../frontend")
 
 TOKEN = os.getenv("API_KEY")
 client = InferenceClient(api_key=TOKEN)
@@ -183,7 +183,3 @@ def open_ast_pdf_route():
         return jsonify({"status": "ok"})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
-
-if __name__ == "__main__":
-    app.run(debug=True, port=5000)
