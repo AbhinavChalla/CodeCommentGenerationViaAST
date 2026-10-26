@@ -15,6 +15,61 @@ def main(args):
     parser.add_option("-l", "--label", action="store",
                       help="The label for the visualization")
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     options, args = parser.parse_args(args)
     if options.file:
         with open(options.file) as instream:
